@@ -1,0 +1,919 @@
+<!DOCTYPE HTML>
+<html lang="pt-BR">
+<head>
+  <title>Arena 90 | O futebol em um só lugar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="description" content="Arena 90: acompanhe os clubes, a tabela, os jogos e as estatísticas do Brasileirão 2026.">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <style>
+    /* ========================================
+       ARENA 90 - PÁGINA INICIAL
+       ======================================== */
+
+    :root {
+      --arena-azul: #27619b;
+      --arena-azul-escuro: #173e69;
+      --arena-texto: #26384c;
+      --arena-cinza: #718198;
+      --arena-borda: #e1e9f2;
+      --arena-fundo: #f6f9fd;
+    }
+
+    #arena-home,
+    #arena-home * {
+      box-sizing: border-box;
+    }
+
+    #arena-home {
+      padding: 28px 0 55px;
+      color: var(--arena-texto);
+    }
+
+    #arena-home a {
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    /* DESTAQUE PRINCIPAL */
+
+    #arena-home .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      padding: 58px 45px;
+      background:
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(255,255,255,.16),
+          transparent 32%
+        ),
+        linear-gradient(
+          125deg,
+          #173e69 0%,
+          #27619b 58%,
+          #3883c5 100%
+        );
+      color: #fff;
+    }
+
+    #arena-home .hero::after {
+      content: "90";
+      position: absolute;
+      right: -10px;
+      bottom: -100px;
+      font-size: clamp(180px, 30vw, 340px);
+      font-weight: 900;
+      line-height: 1;
+      color: rgba(255,255,255,.07);
+      pointer-events: none;
+    }
+
+    #arena-home .hero-conteudo {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+    }
+
+    #arena-home .hero-etiqueta {
+      display: inline-block;
+      padding: 8px 13px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 22px;
+    }
+
+    #arena-home .hero h1 {
+      color: #fff;
+      font-size: clamp(33px, 5vw, 57px);
+      line-height: 1.13;
+      margin: 0 0 20px;
+      letter-spacing: -1px;
+    }
+
+    #arena-home .hero p {
+      color: rgba(255,255,255,.88);
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 28px;
+    }
+
+    #arena-home .hero-botoes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    #arena-home .botao {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .3px;
+      transition: transform .2s, background .2s;
+    }
+
+    #arena-home .botao:hover {
+      transform: translateY(-2px);
+    }
+
+    #arena-home .botao-branco {
+      background: #fff;
+      color: #1e568c;
+    }
+
+    #arena-home .botao-transparente {
+      border: 1px solid rgba(255,255,255,.5);
+      color: #fff;
+      background: rgba(255,255,255,.08);
+    }
+
+    /* CABEÇALHOS */
+
+    #arena-home .secao {
+      margin-top: 45px;
+    }
+
+    #arena-home .secao-cabecalho {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 23px;
+    }
+
+    #arena-home .secao-etiqueta {
+      display: block;
+      color: var(--arena-azul);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      margin-bottom: 7px;
+    }
+
+    #arena-home h2 {
+      font-size: clamp(22px, 3vw, 29px);
+      color: var(--arena-texto);
+      margin: 0;
+    }
+
+    #arena-home .secao-descricao {
+      color: var(--arena-cinza);
+      font-size: 13px;
+      margin: 9px 0 0;
+    }
+
+    #arena-home .link-secao {
+      color: var(--arena-azul);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* ACESSOS RÁPIDOS */
+
+    #arena-home .atalhos {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 15px;
+    }
+
+    #arena-home .atalho {
+      display: flex;
+      flex-direction: column;
+      min-height: 205px;
+      padding: 24px 19px;
+      border: 1px solid var(--arena-borda);
+      border-radius: 16px;
+      background: #fff;
+      transition:
+        transform .2s,
+        box-shadow .2s,
+        border-color .2s;
+    }
+
+    #arena-home .atalho:hover {
+      transform: translateY(-4px);
+      border-color: #b6d1e9;
+      box-shadow: 0 12px 26px rgba(30,75,120,.08);
+    }
+
+    #arena-home .atalho-icone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+      background: #eaf2fb;
+      border-radius: 13px;
+      color: var(--arena-azul);
+      font-size: 21px;
+      margin-bottom: 20px;
+    }
+
+    #arena-home .atalho h3 {
+      font-size: 17px;
+      margin: 0 0 8px;
+      color: var(--arena-texto);
+    }
+
+    #arena-home .atalho p {
+      color: var(--arena-cinza);
+      font-size: 12px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    #arena-home .atalho-seta {
+      margin-top: auto;
+      padding-top: 16px;
+      color: var(--arena-azul);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* FAIXA INFORMATIVA */
+
+    #arena-home .faixa {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 20px;
+      background: var(--arena-fundo);
+      border: 1px solid var(--arena-borda);
+      border-radius: 16px;
+      padding: 27px 30px;
+    }
+
+    #arena-home .faixa h3 {
+      color: var(--arena-texto);
+      font-size: 20px;
+      margin: 0 0 9px;
+    }
+
+    #arena-home .faixa p {
+      color: var(--arena-cinza);
+      font-size: 13px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    #arena-home .botao-azul {
+      background: var(--arena-azul);
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    /* CLUBES */
+
+    #arena-home .clubes-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0,1fr));
+      gap: 12px;
+    }
+
+    #arena-home .clube {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      border: 1px solid var(--arena-borda);
+      border-radius: 12px;
+      padding: 13px 11px;
+      background: #fff;
+      min-width: 0;
+    }
+
+    #arena-home .clube-icone {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      background: var(--cor-clube);
+    }
+
+    #arena-home .clube-nome {
+      color: var(--arena-texto);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+
+    /* SOBRE O PROJETO */
+
+    #arena-home .sobre {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 22px;
+      align-items: start;
+      border: 1px solid var(--arena-borda);
+      border-radius: 16px;
+      padding: 29px;
+      background: #fff;
+    }
+
+    #arena-home .sobre-simbolo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70px;
+      height: 70px;
+      border-radius: 17px;
+      background: #eaf2fb;
+      color: var(--arena-azul);
+      font-size: 29px;
+    }
+
+    #arena-home .sobre h3 {
+      font-size: 21px;
+      color: var(--arena-texto);
+      margin: 0 0 11px;
+    }
+
+    #arena-home .sobre p {
+      font-size: 13px;
+      line-height: 1.9;
+      color: var(--arena-cinza);
+      margin-bottom: 12px;
+    }
+
+    /* RESPONSIVIDADE */
+
+    @media (max-width: 1100px) {
+      #arena-home .atalhos {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      #arena-home .clubes-grid {
+        grid-template-columns: repeat(4, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      #arena-home .hero {
+        padding: 40px 25px;
+      }
+
+      #arena-home .clubes-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      #arena-home .faixa {
+        grid-template-columns: 1fr;
+      }
+
+      #arena-home .faixa .botao {
+        width: 100%;
+      }
+
+      #arena-home .sobre {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #arena-home .atalhos {
+        grid-template-columns: 1fr;
+      }
+
+      #arena-home .atalho {
+        min-height: 0;
+      }
+
+      #arena-home .hero-botoes {
+        flex-direction: column;
+      }
+
+      #arena-home .hero-botoes .botao {
+        width: 100%;
+      }
+
+      #arena-home .clube {
+        gap: 7px;
+        padding: 10px 8px;
+      }
+
+      #arena-home .clube-icone {
+        width: 32px;
+        height: 32px;
+        font-size: 9px;
+      }
+
+      #arena-home .clube-nome {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body class="is-preload">
+
+<div id="wrapper">
+
+  <!-- CONTEÚDO PRINCIPAL -->
+
+  <div id="main">
+    <div class="inner">
+
+      <header id="header">
+        <a href="index.html" class="logo">
+          <strong>Arena 90</strong>
+          <span> | O futebol em um só lugar</span>
+        </a>
+
+        <ul class="icons">
+          <li>
+            <a href="#" class="icon brands fa-instagram">
+              <span class="label">Instagram</span>
+            </a>
+          </li>
+        </ul>
+      </header>
+
+      <div id="arena-home">
+
+        <!-- DESTAQUE PRINCIPAL -->
+
+        <section class="hero">
+
+          <div class="hero-conteudo">
+
+            <span class="hero-etiqueta">
+              ⚽ ARENA 90 • BRASILEIRÃO 2026
+            </span>
+
+            <h1>
+              A paixão pelo futebol
+              começa aqui.
+            </h1>
+
+            <p>
+              Clubes, classificação, partidas e estatísticas
+              do futebol brasileiro em um só lugar.
+              Explore o Brasileirão com o Arena 90!
+            </p>
+
+            <div class="hero-botoes">
+
+              <a href="Partidas.html"
+                 class="botao botao-branco">
+                <i class="fas fa-calendar-alt"
+                   aria-hidden="true"></i>
+                &nbsp; Ver Partidas
+              </a>
+
+              <a href="Tabela.html"
+                 class="botao botao-transparente">
+                <i class="fas fa-list-ol"
+                   aria-hidden="true"></i>
+                &nbsp; Ver Classificação
+              </a>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ACESSO RÁPIDO -->
+
+        <section class="secao">
+
+          <div class="secao-cabecalho">
+
+            <div>
+              <span class="secao-etiqueta">
+                EXPLORE O ARENA 90
+              </span>
+
+              <h2>Tudo sobre o Brasileirão</h2>
+
+              <p class="secao-descricao">
+                Escolha o que deseja acompanhar.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="atalhos">
+
+            <a href="generic.html" class="atalho">
+
+              <div class="atalho-icone">
+                <i class="fas fa-shield-alt"
+                   aria-hidden="true"></i>
+              </div>
+
+              <h3>Times</h3>
+
+              <p>
+                Conheça os clubes que disputam
+                a Série A do Campeonato Brasileiro.
+              </p>
+
+              <span class="atalho-seta">
+                Explorar clubes →
+              </span>
+
+            </a>
+
+            <a href="Tabela.html" class="atalho">
+
+              <div class="atalho-icone">
+                <i class="fas fa-list-ol"
+                   aria-hidden="true"></i>
+              </div>
+
+              <h3>Classificação</h3>
+
+              <p>
+                Acompanhe as posições e o desempenho
+                dos clubes na competição.
+              </p>
+
+              <span class="atalho-seta">
+                Ver tabela →
+              </span>
+
+            </a>
+
+            <a href="Partidas.html" class="atalho">
+
+              <div class="atalho-icone">
+                <i class="fas fa-calendar-alt"
+                   aria-hidden="true"></i>
+              </div>
+
+              <h3>Partidas</h3>
+
+              <p>
+                Consulte jogos e resultados
+                navegando pelas datas.
+              </p>
+
+              <span class="atalho-seta">
+                Ver jogos →
+              </span>
+
+            </a>
+
+            <a href="Estatisticas.html" class="atalho">
+
+              <div class="atalho-icone">
+                <i class="fas fa-chart-bar"
+                   aria-hidden="true"></i>
+              </div>
+
+              <h3>Estatísticas</h3>
+
+              <p>
+                Descubra os melhores ataques,
+                defesas, vitórias e aproveitamento.
+              </p>
+
+              <span class="atalho-seta">
+                Ver números →
+              </span>
+
+            </a>
+
+          </div>
+
+        </section>
+
+        <!-- FAIXA DE PARTIDAS -->
+
+        <section class="secao">
+
+          <div class="faixa">
+
+            <div>
+              <span class="secao-etiqueta">
+                ACOMPANHE O CAMPEONATO
+              </span>
+
+              <h3>Não perca os jogos do Brasileirão!</h3>
+
+              <p>
+                Veja as partidas do dia, consulte
+                resultados anteriores e avance para
+                as próximas datas no calendário.
+              </p>
+            </div>
+
+            <a href="Partidas.html"
+               class="botao botao-azul">
+              Consultar partidas →
+            </a>
+
+          </div>
+
+        </section>
+
+        <!-- CLUBES DO BRASILEIRÃO -->
+
+        <section class="secao">
+
+          <div class="secao-cabecalho">
+
+            <div>
+              <span class="secao-etiqueta">
+                SÉRIE A • 2026
+              </span>
+
+              <h2>Clubes do Campeonato</h2>
+
+              <p class="secao-descricao">
+                Os 20 participantes do Brasileirão.
+              </p>
+            </div>
+
+            <a href="generic.html"
+               class="link-secao">
+              Conhecer todos →
+            </a>
+
+          </div>
+
+          <div id="clubes-home" class="clubes-grid">
+          </div>
+
+        </section>
+
+        <!-- ESTATÍSTICAS -->
+
+        <section class="secao">
+
+          <div class="faixa">
+
+            <div>
+              <span class="secao-etiqueta">
+                OS NÚMEROS DO FUTEBOL
+              </span>
+
+              <h3>Quem tem o melhor desempenho?</h3>
+
+              <p>
+                Compare os clubes por gols marcados,
+                gols sofridos, vitórias e aproveitamento.
+                Explore os rankings do campeonato.
+              </p>
+            </div>
+
+            <a href="Estatisticas.html"
+               class="botao botao-azul">
+              Ver estatísticas →
+            </a>
+
+          </div>
+
+        </section>
+
+        <!-- SOBRE O ARENA 90 -->
+
+        <section class="secao">
+
+          <div class="secao-cabecalho">
+
+            <div>
+              <span class="secao-etiqueta">
+                NOSSO PROJETO
+              </span>
+
+              <h2>Conheça o Arena 90</h2>
+            </div>
+
+          </div>
+
+          <div class="sobre">
+
+            <div class="sobre-simbolo">
+              <i class="fas fa-futbol"
+                 aria-hidden="true"></i>
+            </div>
+
+            <div>
+
+              <h3>Feito para quem vive o futebol</h3>
+
+              <p>
+                O Arena 90 é um projeto criado por
+                Diego Conde para reunir informações
+                do futebol brasileiro em um ambiente
+                moderno, organizado e fácil de navegar.
+              </p>
+
+              <p>
+                Nosso objetivo é ajudar os torcedores
+                a acompanhar seus clubes favoritos,
+                consultar resultados e descobrir
+                estatísticas do campeonato.
+              </p>
+
+              <a href="Contato.html"
+                 class="link-secao">
+                Envie sua sugestão →
+              </a>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MENU LATERAL -->
+
+  <div id="sidebar">
+    <div class="inner">
+
+      <nav id="menu">
+
+        <header class="major">
+          <h2>Menu</h2>
+        </header>
+
+        <ul>
+          <li>
+            <a href="index.html">Início</a>
+          </li>
+
+          <li>
+            <a href="Times.html">Times</a>
+          </li>
+
+          <li>
+            <a href="Tabela.html">Tabela</a>
+          </li>
+
+          <li>
+            <a href="Partidas.html">Partidas</a>
+          </li>
+
+          <li>
+            <a href="Estatisticas.html">Estatísticas</a>
+          </li>
+
+          <li>
+            <a href="Contato.html">Contato</a>
+          </li>
+        </ul>
+
+      </nav>
+
+      <!-- SOBRE O SITE -->
+
+      <section>
+
+        <header class="major">
+          <h2>Sobre o Arena 90</h2>
+        </header>
+
+        <p>
+          Um portal dedicado ao futebol brasileiro,
+          com clubes, tabela, partidas e estatísticas
+          do Brasileirão.
+        </p>
+
+        <ul class="actions">
+          <li>
+            <a href="Contato.html" class="button">
+              Fale Conosco
+            </a>
+          </li>
+        </ul>
+
+      </section>
+
+      <!-- ACESSO RÁPIDO -->
+
+      <section>
+
+        <header class="major">
+          <h2>Acesso Rápido</h2>
+        </header>
+
+        <ul class="alt">
+          <li>
+            <a href="Partidas.html">
+              Jogos e resultados
+            </a>
+          </li>
+
+          <li>
+            <a href="Tabela.html">
+              Classificação
+            </a>
+          </li>
+
+          <li>
+            <a href="Estatisticas.html">
+              Rankings e estatísticas
+            </a>
+          </li>
+        </ul>
+
+      </section>
+
+      <!-- RODAPÉ -->
+
+      <footer id="footer">
+
+        <p class="copyright">
+          &copy; Arena 90.
+          Desenvolvido por Diego Conde.
+          Design base:
+          <a href="https://html5up.net">
+            HTML5 UP
+          </a>.
+        </p>
+
+      </footer>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- SCRIPTS DO TEMPLATE -->
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<!-- CLUBES DA PÁGINA INICIAL -->
+
+<script>
+(function () {
+  "use strict";
+
+  const clubes = [
+    ["Athletico-PR", "CAP", "#c92032"],
+    ["Atlético-MG", "CAM", "#333333"],
+    ["Bahia", "BAH", "#1766b1"],
+    ["Botafogo", "BOT", "#333333"],
+    ["Chapecoense", "CHA", "#13834b"],
+    ["Corinthians", "COR", "#333333"],
+    ["Coritiba", "CFC", "#188c58"],
+    ["Cruzeiro", "CRU", "#1656bd"],
+    ["Flamengo", "FLA", "#c32235"],
+    ["Fluminense", "FLU", "#852c4d"],
+    ["Grêmio", "GRE", "#168bd1"],
+    ["Internacional", "INT", "#bd1d2c"],
+    ["Mirassol", "MIR", "#b39714"],
+    ["Palmeiras", "PAL", "#08734c"],
+    ["Red Bull Bragantino", "RBB", "#a22c39"],
+    ["Remo", "REM", "#17418a"],
+    ["Santos", "SAN", "#333333"],
+    ["São Paulo", "SAO", "#c72c3c"],
+    ["Vasco da Gama", "VAS", "#333333"],
+    ["Vitória", "VIT", "#bc2030"]
+  ];
+
+  const grade = document.getElementById("clubes-home");
+
+  clubes.forEach(([nome, sigla, cor]) => {
+    const clube = document.createElement("div");
+    clube.className = "clube";
+
+    const icone = document.createElement("div");
+    icone.className = "clube-icone";
+    icone.style.setProperty("--cor-clube", cor);
+    icone.textContent = sigla;
+
+    const texto = document.createElement("span");
+    texto.className = "clube-nome";
+    texto.textContent = nome;
+
+    clube.append(icone, texto);
+    grade.appendChild(clube);
+  });
+
+})();
+</script>
+
+</body>
+</html>

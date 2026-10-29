@@ -1,0 +1,1142 @@
+<!DOCTYPE HTML>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=no">
+
+<title>Partidas | Arena 90</title>
+
+<!-- CSS ORIGINAL DO SITE -->
+<link rel="stylesheet" href="assets/css/main.css">
+
+<style>
+/* =====================================
+   ARENA 90 - PÁGINA PARTIDAS
+===================================== */
+
+#arena-partidas {
+  background: #ffffff;
+  padding: 25px 0 45px;
+  color: #333;
+}
+
+#arena-partidas * {
+  box-sizing: border-box;
+}
+
+#arena-partidas .cabecalho {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+#arena-partidas .etiqueta {
+  display: block;
+  color: #27619b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+#arena-partidas h1 {
+  color: #263b50;
+  font-size: clamp(28px, 4vw, 43px);
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+#arena-partidas .descricao {
+  color: #738396;
+  font-size: 15px;
+}
+
+/* NAVEGAÇÃO DE DATAS */
+
+#arena-partidas .navegacao-data {
+  background: #f5f8fc;
+  border: 1px solid #e0e7ef;
+  border-radius: 15px;
+  padding: 22px;
+  margin-bottom: 28px;
+}
+
+#arena-partidas .linha-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#arena-partidas .seta-data {
+  width: 47px;
+  height: 47px;
+  flex-shrink: 0;
+  border: 1px solid #d5e0ed;
+  background: #ffffff;
+  color: #27619b;
+  border-radius: 11px;
+  box-shadow: none;
+  padding: 0;
+  font-size: 26px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  transition: .2s;
+}
+
+#arena-partidas .seta-data:hover {
+  background: #27619b;
+  color: #fff;
+}
+
+#arena-partidas .data-central {
+  text-align: center;
+  min-width: 0;
+}
+
+#arena-partidas .data-central h2 {
+  color: #263b50;
+  font-size: clamp(16px, 3vw, 22px);
+  margin: 0 0 5px;
+  text-transform: capitalize;
+}
+
+#arena-partidas .data-central p {
+  color: #8190a2;
+  font-size: 12px;
+  margin: 0;
+}
+
+#arena-partidas .acoes-data {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+#arena-partidas .acao-data {
+  background: #ffffff;
+  border: 1px solid #d5e0ed;
+  color: #27619b;
+  border-radius: 8px;
+  box-shadow: none;
+  height: auto;
+  padding: 9px 16px;
+  line-height: 1.5;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#arena-partidas .acao-data:hover {
+  background: #27619b;
+  color: #fff;
+}
+
+#arena-partidas .campo-calendario {
+  display: none;
+  margin: 15px auto 0;
+  max-width: 250px;
+}
+
+#arena-partidas .campo-calendario.visivel {
+  display: block;
+}
+
+#arena-partidas input[type="date"] {
+  width: 100%;
+  background: #fff;
+  color: #263b50;
+  border: 1px solid #d5e0ed;
+  border-radius: 8px;
+  padding: 10px;
+  height: auto;
+}
+
+/* BARRA DE INFORMAÇÕES */
+
+#arena-partidas .barra-jogos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 17px;
+  flex-wrap: wrap;
+}
+
+#arena-partidas .barra-jogos h3 {
+  color: #263b50;
+  font-size: 19px;
+  margin: 0;
+}
+
+#arena-partidas .total-jogos {
+  background: #eaf2fa;
+  color: #27619b;
+  border-radius: 25px;
+  padding: 8px 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* CARDS DAS PARTIDAS */
+
+#arena-partidas .lista-partidas {
+  display: grid;
+  gap: 17px;
+}
+
+#arena-partidas .card-partida {
+  background: #ffffff;
+  border: 1px solid #e0e7ef;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0,0,0,.04);
+  transition: box-shadow .2s, border-color .2s;
+}
+
+#arena-partidas .card-partida:hover {
+  border-color: #27619b;
+  box-shadow: 0 8px 22px rgba(39,97,155,.1);
+}
+
+#arena-partidas .topo-partida {
+  background: #f5f8fc;
+  border-bottom: 1px solid #e7edf4;
+  padding: 11px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#arena-partidas .competicao {
+  color: #52687e;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#arena-partidas .status {
+  color: #27619b;
+  background: #e5eff9;
+  border-radius: 20px;
+  padding: 5px 11px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+#arena-partidas .status.ao-vivo {
+  color: #b42335;
+  background: #ffe8eb;
+}
+
+#arena-partidas .status.encerrado {
+  color: #667789;
+  background: #e9eef3;
+}
+
+/* CONFRONTO */
+
+#arena-partidas .confronto {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 25px 20px;
+}
+
+#arena-partidas .equipe {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+#arena-partidas .icone-time {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--cor-time, #27619b);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: .5px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+}
+
+#arena-partidas .nome-time {
+  color: #263b50;
+  font-size: 14px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+#arena-partidas .centro-placar {
+  text-align: center;
+  min-width: 90px;
+}
+
+#arena-partidas .placar {
+  color: #263b50;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+#arena-partidas .horario {
+  color: #8190a2;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 7px;
+}
+
+#arena-partidas .versus {
+  color: #a2afbe;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* RODAPÉ DO JOGO */
+
+#arena-partidas .rodape-partida {
+  padding: 12px 18px;
+  border-top: 1px solid #eef1f5;
+  text-align: center;
+  color: #8190a2;
+  font-size: 12px;
+}
+
+/* MENSAGENS */
+
+#arena-partidas .mensagem {
+  text-align: center;
+  padding: 48px 20px;
+  background: #f5f8fc;
+  border: 1px dashed #d5e0ed;
+  border-radius: 15px;
+  color: #718096;
+}
+
+#arena-partidas .mensagem .simbolo {
+  font-size: 35px;
+  margin-bottom: 12px;
+}
+
+#arena-partidas .mensagem h3 {
+  color: #263b50;
+  margin-bottom: 10px;
+}
+
+#arena-partidas .mensagem p {
+  margin: 0;
+}
+
+#arena-partidas .mensagem button {
+  margin-top: 18px;
+  background: #27619b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: none;
+  padding: 10px 20px;
+  height: auto;
+  line-height: 1.5;
+}
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+  #arena-partidas .navegacao-data {
+    padding: 15px 10px;
+  }
+
+  #arena-partidas .seta-data {
+    width: 39px;
+    height: 42px;
+  }
+
+  #arena-partidas .confronto {
+    padding: 20px 8px;
+    gap: 5px;
+  }
+
+  #arena-partidas .icone-time {
+    width: 54px;
+    height: 54px;
+    font-size: 14px;
+  }
+
+  #arena-partidas .nome-time {
+    font-size: 12px;
+  }
+
+  #arena-partidas .centro-placar {
+    min-width: 65px;
+  }
+
+  #arena-partidas .placar {
+    font-size: 24px;
+  }
+
+  #arena-partidas .topo-partida {
+    padding: 10px;
+  }
+}
+</style>
+</head>
+
+<body class="is-preload">
+
+<div id="wrapper">
+
+  <!-- ÁREA PRINCIPAL -->
+  <div id="main">
+    <div class="inner">
+
+      <!-- CABEÇALHO ORIGINAL -->
+      <header id="header">
+        <a href="index.html" class="logo">
+          <strong>Arena 90</strong>
+        </a>
+
+        <ul class="icons">
+          <li>
+            <a href="#" class="icon brands fa-twitter">
+              <span class="label">Twitter</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="icon brands fa-facebook-f">
+              <span class="label">Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="icon brands fa-instagram">
+              <span class="label">Instagram</span>
+            </a>
+          </li>
+        </ul>
+      </header>
+
+      <!-- SEÇÃO PARTIDAS -->
+      <section id="arena-partidas">
+
+        <div class="cabecalho">
+          <span class="etiqueta">
+            ARENA 90 • FUTEBOL BRASILEIRO
+          </span>
+
+          <h1>Partidas do Brasileirão</h1>
+
+          <p class="descricao">
+            Confira resultados, partidas de hoje
+            e os próximos confrontos.
+          </p>
+        </div>
+
+        <!-- NAVEGAÇÃO DE DATAS -->
+        <div class="navegacao-data">
+
+          <div class="linha-data">
+
+            <button
+              type="button"
+              id="dia-anterior"
+              class="seta-data"
+              aria-label="Dia anterior">
+              &#10094;
+            </button>
+
+            <div class="data-central">
+              <h2 id="data-exibida"></h2>
+              <p id="data-subtitulo"></p>
+            </div>
+
+            <button
+              type="button"
+              id="proximo-dia"
+              class="seta-data"
+              aria-label="Próximo dia">
+              &#10095;
+            </button>
+
+          </div>
+
+          <div class="acoes-data">
+
+            <button
+              type="button"
+              class="acao-data"
+              id="botao-hoje">
+              Hoje
+            </button>
+
+            <button
+              type="button"
+              class="acao-data"
+              id="botao-calendario">
+              &#128197; Escolher data
+            </button>
+
+          </div>
+
+          <div
+            id="campo-calendario"
+            class="campo-calendario">
+
+            <input
+              type="date"
+              id="seletor-data"
+              aria-label="Selecionar data">
+
+          </div>
+
+        </div>
+
+        <!-- CONTADOR -->
+        <div class="barra-jogos">
+          <h3>Jogos da data</h3>
+          <span id="total-jogos" class="total-jogos">
+            Carregando...
+          </span>
+        </div>
+
+        <!-- LISTA DE PARTIDAS -->
+        <div
+          id="lista-partidas"
+          class="lista-partidas"
+          aria-live="polite">
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+
+  <!-- MENU LATERAL ORIGINAL -->
+  <div id="sidebar">
+    <div class="inner">
+
+      <section id="search" class="alt">
+        <form method="get" action="#">
+          <input
+            type="text"
+            name="query"
+            id="query"
+            placeholder="Procurar">
+        </form>
+      </section>
+
+      <nav id="menu">
+        <header class="major">
+          <h2>Menu</h2>
+        </header>
+
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="Times.html">Times</a></li>
+          <li><a href="Tabela.html">Tabela</a></li>
+          <li><a href="Partidas.html">Partidas</a></li>
+          <li><a href="Estatisticas.html">Estatísticas</a></li>
+          <li><a href="Contato.html">Contato</a></li>
+        </ul>
+      </nav>
+
+      <!-- MAIS NOTÍCIAS -->
+      <section>
+        <header class="major">
+          <h2>Mais Notícias</h2>
+        </header>
+
+        <div class="mini-posts">
+
+          <article>
+            <a href="#" class="image">
+              <img src="images/pic07.jpg" alt="Notícia">
+            </a>
+            <p>
+              Acompanhe as principais notícias
+              do futebol brasileiro.
+            </p>
+          </article>
+
+          <article>
+            <a href="#" class="image">
+              <img src="images/pic08.jpg" alt="Futebol">
+            </a>
+            <p>
+              Confira os resultados e destaques
+              das competições.
+            </p>
+          </article>
+
+        </div>
+
+        <ul class="actions">
+          <li>
+            <a href="#" class="button">Ver Mais</a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- CONTATO -->
+      <section>
+        <header class="major">
+          <h2>Fale Conosco</h2>
+        </header>
+
+        <ul class="contact">
+          <li class="icon solid fa-envelope">
+            <a href="#">Arena90@gmail.com</a>
+          </li>
+          <li class="icon solid fa-phone">
+            (67) 6767-6767
+          </li>
+          <li class="icon solid fa-home">
+            291 Rua Belterra,<br>
+            Santo Amaro
+          </li>
+        </ul>
+      </section>
+
+      <footer id="footer">
+        <p class="copyright">
+          &copy; Arena 90. Design:
+          <a href="https://html5up.net">HTML5 UP</a>.
+        </p>
+      </footer>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- SCRIPTS ORIGINAIS DO SITE -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<!-- SISTEMA DE PARTIDAS -->
+<script>
+(() => {
+  "use strict";
+
+  /*
+    =====================================
+    CONFIGURAÇÕES
+    =====================================
+
+    Campeonato Brasileiro Série A:
+    código ESPN = bra.1
+
+    Fonte:
+    API pública não oficial da ESPN.
+
+    Atenção:
+    - Não exige chave.
+    - Pode sofrer alterações ou bloqueios.
+    - Não é uma integração oficial.
+    - Requer internet e acesso CORS.
+  */
+
+  const API_BASE =
+    "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/scoreboard";
+
+  const FUSO = "America/Sao_Paulo";
+
+  /*
+    CORES E SIGLAS DOS CLUBES
+    Mesmo conceito visual da seção Times.
+  */
+
+  const clubes = [
+    ["Athletico-PR", "CAP", "#c92032",
+      ["athletico", "athletico-pr", "atletico paranaense"]],
+    ["Atlético-MG", "CAM", "#333333",
+      ["atletico-mg", "atletico mineiro", "atlético-mg"]],
+    ["Bahia", "BAH", "#1766b1", ["bahia"]],
+    ["Botafogo", "BOT", "#333333", ["botafogo"]],
+    ["Chapecoense", "CHA", "#13834b", ["chapecoense"]],
+    ["Corinthians", "COR", "#333333", ["corinthians"]],
+    ["Coritiba", "CFC", "#188c58", ["coritiba"]],
+    ["Cruzeiro", "CRU", "#1656bd", ["cruzeiro"]],
+    ["Flamengo", "FLA", "#c32235", ["flamengo"]],
+    ["Fluminense", "FLU", "#852c4d", ["fluminense"]],
+    ["Grêmio", "GRE", "#168bd1", ["gremio", "grêmio"]],
+    ["Internacional", "INT", "#bd1d2c",
+      ["internacional", "inter porto alegre"]],
+    ["Mirassol", "MIR", "#c8a522", ["mirassol"]],
+    ["Palmeiras", "PAL", "#08734c", ["palmeiras"]],
+    ["Red Bull Bragantino", "RBB", "#a22c39",
+      ["bragantino", "red bull bragantino", "rb bragantino"]],
+    ["Remo", "REM", "#17418a", ["remo"]],
+    ["Santos", "SAN", "#333333", ["santos"]],
+    ["São Paulo", "SAO", "#c72c3c",
+      ["sao paulo", "são paulo"]],
+    ["Vasco da Gama", "VAS", "#333333",
+      ["vasco", "vasco da gama"]],
+    ["Vitória", "VIT", "#bc2030",
+      ["vitoria", "vitória"]]
+  ];
+
+  const lista = document.getElementById("lista-partidas");
+  const dataExibida = document.getElementById("data-exibida");
+  const dataSubtitulo = document.getElementById("data-subtitulo");
+  const totalJogos = document.getElementById("total-jogos");
+  const seletor = document.getElementById("seletor-data");
+  const campoCalendario =
+    document.getElementById("campo-calendario");
+
+  let dataAtual = hojeBrasil();
+  let requisicaoAtual = null;
+
+  function hojeBrasil() {
+    const partes = new Intl.DateTimeFormat("en-US", {
+      timeZone: FUSO,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    }).formatToParts(new Date());
+
+    const obter = tipo =>
+      partes.find(p => p.type === tipo).value;
+
+    return `${obter("year")}-${obter("month")}-${obter("day")}`;
+  }
+
+  function dataLocal(iso) {
+    return new Date(`${iso}T12:00:00`);
+  }
+
+  function formatarISO(data) {
+    const ano = data.getFullYear();
+    const mes = String(data.getMonth() + 1).padStart(2, "0");
+    const dia = String(data.getDate()).padStart(2, "0");
+
+    return `${ano}-${mes}-${dia}`;
+  }
+
+  function mudarDias(quantidade) {
+    const data = dataLocal(dataAtual);
+    data.setDate(data.getDate() + quantidade);
+    selecionarData(formatarISO(data));
+  }
+
+  function formatarData(iso) {
+    return new Intl.DateTimeFormat("pt-BR", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    }).format(dataLocal(iso));
+  }
+
+  function atualizarCabecalho() {
+    dataExibida.textContent = formatarData(dataAtual);
+
+    const hoje = hojeBrasil();
+
+    if (dataAtual === hoje) {
+      dataSubtitulo.textContent = "Jogos de hoje";
+    } else if (dataAtual < hoje) {
+      dataSubtitulo.textContent = "Resultados anteriores";
+    } else {
+      dataSubtitulo.textContent = "Próximos jogos";
+    }
+
+    seletor.value = dataAtual;
+  }
+
+  function normalizar(texto) {
+    return String(texto || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
+  }
+
+  function identificarClube(equipe) {
+    const nomes = [
+      equipe?.displayName,
+      equipe?.name,
+      equipe?.shortDisplayName,
+      equipe?.abbreviation
+    ].filter(Boolean).map(normalizar);
+
+    const encontrado = clubes.find(clube => {
+      const apelidos = [clube[0], ...clube[3]]
+        .map(normalizar);
+
+      return nomes.some(nome => apelidos.includes(nome));
+    });
+
+    if (encontrado) {
+      return {
+        nome: encontrado[0],
+        sigla: encontrado[1],
+        cor: encontrado[2]
+      };
+    }
+
+    return {
+      nome: equipe?.shortDisplayName ||
+        equipe?.displayName ||
+        "Equipe",
+      sigla: equipe?.abbreviation || "FC",
+      cor: "#27619b"
+    };
+  }
+
+  function criarElemento(tag, classe, texto) {
+    const el = document.createElement(tag);
+
+    if (classe) el.className = classe;
+    if (texto !== undefined) el.textContent = texto;
+
+    return el;
+  }
+
+  function mostrarMensagem(titulo, descricao, erro = false) {
+    lista.replaceChildren();
+
+    const caixa = criarElemento("div", "mensagem");
+    const simbolo = criarElemento(
+      "div",
+      "simbolo",
+      erro ? "⚠️" : "⚽"
+    );
+
+    const h3 = criarElemento("h3", "", titulo);
+    const p = criarElemento("p", "", descricao);
+
+    caixa.append(simbolo, h3, p);
+
+    if (erro) {
+      const botao = criarElemento("button", "", "Tentar novamente");
+      botao.type = "button";
+      botao.addEventListener("click", carregarPartidas);
+      caixa.appendChild(botao);
+    }
+
+    lista.appendChild(caixa);
+  }
+
+  function criarEquipe(equipe) {
+    const clube = identificarClube(equipe);
+
+    const container = criarElemento("div", "equipe");
+
+    const icone = criarElemento(
+      "div",
+      "icone-time",
+      clube.sigla
+    );
+
+    icone.style.setProperty("--cor-time", clube.cor);
+
+    const nome = criarElemento(
+      "div",
+      "nome-time",
+      clube.nome
+    );
+
+    container.append(icone, nome);
+    return container;
+  }
+
+  function horarioBrasil(dataUTC) {
+    if (!dataUTC) return "Horário a definir";
+
+    const data = new Date(dataUTC);
+
+    if (Number.isNaN(data.getTime())) {
+      return "Horário a definir";
+    }
+
+    return new Intl.DateTimeFormat("pt-BR", {
+      timeZone: FUSO,
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false
+    }).format(data);
+  }
+
+  function obterSituacao(evento, competicao) {
+    const status = competicao?.status || evento.status || {};
+    const tipo = status.type || {};
+    const estado = tipo.state || "";
+
+    const descricao = tipo.shortDetail ||
+      tipo.detail ||
+      tipo.description ||
+      "Programado";
+
+    return {
+      estado,
+      descricao,
+      concluido: tipo.completed === true ||
+        estado === "post",
+      aoVivo: estado === "in"
+    };
+  }
+
+  function criarCard(evento) {
+    const competicao = evento.competitions?.[0];
+
+    if (!competicao) return null;
+
+    const participantes = competicao.competitors || [];
+
+    const mandante = participantes.find(
+      e => e.homeAway === "home"
+    );
+
+    const visitante = participantes.find(
+      e => e.homeAway === "away"
+    );
+
+    if (!mandante || !visitante) return null;
+
+    const situacao = obterSituacao(evento, competicao);
+
+    const card = criarElemento("article", "card-partida");
+
+    /* TOPO */
+
+    const topo = criarElemento("div", "topo-partida");
+
+    const rodada = competicao.notes?.[0]?.headline ||
+      evento.season?.displayName ||
+      "Brasileirão Série A";
+
+    const titulo = criarElemento(
+      "span",
+      "competicao",
+      rodada
+    );
+
+    const status = criarElemento(
+      "span",
+      "status",
+      situacao.descricao
+    );
+
+    if (situacao.aoVivo) {
+      status.classList.add("ao-vivo");
+    } else if (situacao.concluido) {
+      status.classList.add("encerrado");
+    }
+
+    topo.append(titulo, status);
+
+    /* CONFRONTO */
+
+    const confronto = criarElemento("div", "confronto");
+
+    const equipeCasa = criarEquipe(mandante.team);
+    const equipeFora = criarEquipe(visitante.team);
+
+    const centro = criarElemento("div", "centro-placar");
+
+    const mostrarPlacar =
+      situacao.aoVivo || situacao.concluido;
+
+    const placarTexto = mostrarPlacar
+      ? `${mandante.score ?? "-"} x ${visitante.score ?? "-"}`
+      : "VS";
+
+    const placar = criarElemento(
+      "div",
+      mostrarPlacar ? "placar" : "versus",
+      placarTexto
+    );
+
+    const horario = criarElemento(
+      "div",
+      "horario",
+      horarioBrasil(evento.date)
+    );
+
+    centro.append(placar, horario);
+
+    confronto.append(equipeCasa, centro, equipeFora);
+
+    /* LOCAL */
+
+    const rodape = criarElemento(
+      "div",
+      "rodape-partida"
+    );
+
+    const local = competicao.venue?.fullName ||
+      evento.venue?.fullName ||
+      "Local não informado";
+
+    rodape.textContent = `📍 ${local}`;
+
+    card.append(topo, confronto, rodape);
+
+    return card;
+  }
+
+  async function carregarPartidas() {
+    if (requisicaoAtual) {
+      requisicaoAtual.abort();
+    }
+
+    const controle = new AbortController();
+    requisicaoAtual = controle;
+
+    atualizarCabecalho();
+
+    totalJogos.textContent = "Carregando...";
+
+    mostrarMensagem(
+      "Buscando partidas...",
+      "Aguarde enquanto consultamos os jogos da data."
+    );
+
+    const dataConsulta = dataAtual.replaceAll("-", "");
+
+    const url = `${API_BASE}?dates=${dataConsulta}&limit=100`;
+
+    try {
+      const resposta = await fetch(url, {
+        signal: controle.signal,
+        headers: { "Accept": "application/json" }
+      });
+
+      if (!resposta.ok) {
+        throw new Error(`Erro HTTP ${resposta.status}`);
+      }
+
+      const dados = await resposta.json();
+
+      if (controle !== requisicaoAtual) return;
+
+      const eventos = Array.isArray(dados.events)
+        ? dados.events
+        : [];
+
+      const partidas = eventos.filter(evento => {
+        if (!evento.date) return true;
+
+        const diaBrasil = new Intl.DateTimeFormat("en-CA", {
+          timeZone: FUSO,
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit"
+        }).format(new Date(evento.date));
+
+        return diaBrasil === dataAtual;
+      });
+
+      partidas.sort((a, b) =>
+        new Date(a.date) - new Date(b.date)
+      );
+
+      lista.replaceChildren();
+
+      let quantidade = 0;
+
+      partidas.forEach(evento => {
+        const card = criarCard(evento);
+
+        if (card) {
+          lista.appendChild(card);
+          quantidade++;
+        }
+      });
+
+      totalJogos.textContent =
+        `${quantidade} ${quantidade === 1 ? "jogo" : "jogos"}`;
+
+      if (quantidade === 0) {
+        mostrarMensagem(
+          "Nenhuma partida encontrada",
+          "Não há jogos registrados para esta data na fonte consultada. Use as setas para escolher outro dia."
+        );
+      }
+
+    } catch (erro) {
+      if (erro.name === "AbortError") return;
+      if (controle !== requisicaoAtual) return;
+
+      totalJogos.textContent = "Indisponível";
+
+      mostrarMensagem(
+        "Não foi possível carregar as partidas",
+        "A fonte de dados pode estar temporariamente indisponível ou bloqueada pelo navegador.",
+        true
+      );
+
+      console.error("Arena 90 - erro nas partidas:", erro);
+
+    } finally {
+      if (controle === requisicaoAtual) {
+        requisicaoAtual = null;
+      }
+    }
+  }
+
+  function selecionarData(novaData) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(novaData)) return;
+
+    dataAtual = novaData;
+    carregarPartidas();
+  }
+
+  document.getElementById("dia-anterior")
+    .addEventListener("click", () => mudarDias(-1));
+
+  document.getElementById("proximo-dia")
+    .addEventListener("click", () => mudarDias(1));
+
+  document.getElementById("botao-hoje")
+    .addEventListener("click", () => {
+      selecionarData(hojeBrasil());
+    });
+
+  document.getElementById("botao-calendario")
+    .addEventListener("click", () => {
+      campoCalendario.classList.toggle("visivel");
+    });
+
+  seletor.addEventListener("change", () => {
+    if (seletor.value) {
+      selecionarData(seletor.value);
+      campoCalendario.classList.remove("visivel");
+    }
+  });
+
+  /* ATUALIZAÇÃO PERIÓDICA */
+  /* Enquanto a página estiver aberta, atualiza a
+     data selecionada a cada 60 segundos. */
+
+  setInterval(() => {
+    if (!document.hidden && !requisicaoAtual) {
+      carregarPartidas();
+    }
+  }, 60000);
+
+  carregarPartidas();
+
+})();
+</script>
+
+</body>
+</html>

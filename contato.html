@@ -1,0 +1,778 @@
+<!DOCTYPE HTML>
+<html lang="pt-BR">
+<head>
+  <title>Contato | Arena 90</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <style>
+    /* =========================================
+       ARENA 90 - PÁGINA DE CONTATO
+       ========================================= */
+
+    #arena-contato {
+      padding: 28px 0 55px;
+      color: #26384c;
+    }
+
+    #arena-contato * {
+      box-sizing: border-box;
+    }
+
+    #arena-contato .contato-topo {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    #arena-contato .etiqueta {
+      color: #27619b;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    #arena-contato h1 {
+      color: #26384c;
+      font-size: clamp(30px, 4vw, 43px);
+      margin: 10px 0;
+    }
+
+    #arena-contato .subtitulo {
+      color: #718197;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* GRID PRINCIPAL */
+
+    #arena-contato .contato-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    #arena-contato .cartao {
+      background: #fff;
+      border: 1px solid #dfe7f0;
+      border-radius: 17px;
+      padding: 29px;
+      box-shadow: 0 5px 22px rgba(25, 65, 105, .045);
+    }
+
+    #arena-contato .cartao h2 {
+      font-size: 23px;
+      color: #26384c;
+      margin: 0 0 9px;
+    }
+
+    #arena-contato .cartao-descricao {
+      color: #718197;
+      font-size: 13px;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+
+    /* FORMULÁRIO */
+
+    #arena-contato .campo {
+      margin-bottom: 19px;
+    }
+
+    #arena-contato label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #344c65;
+      margin-bottom: 8px;
+    }
+
+    #arena-contato input,
+    #arena-contato select,
+    #arena-contato textarea {
+      width: 100%;
+      background: #f9fbfe;
+      color: #26384c;
+      border: 1px solid #dce5ee;
+      border-radius: 10px;
+      box-shadow: none;
+      font-size: 14px;
+      outline: none;
+    }
+
+    #arena-contato input,
+    #arena-contato select {
+      height: 47px;
+      padding: 0 14px;
+    }
+
+    #arena-contato textarea {
+      min-height: 150px;
+      resize: vertical;
+      padding: 13px 14px;
+      line-height: 1.6;
+    }
+
+    #arena-contato input:focus,
+    #arena-contato select:focus,
+    #arena-contato textarea:focus {
+      border-color: #27619b;
+      box-shadow: 0 0 0 3px rgba(39, 97, 155, .10);
+    }
+
+    #arena-contato .campos-duplos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    #arena-contato .enviar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      height: 49px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 10px;
+      background: #27619b;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.4;
+      box-shadow: none;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+
+    #arena-contato .enviar:hover {
+      background: #1d4e80;
+      transform: translateY(-1px);
+    }
+
+    #arena-contato .form-aviso {
+      font-size: 12px;
+      color: #8190a0;
+      margin-top: 15px;
+      line-height: 1.7;
+    }
+
+    #arena-contato .resultado {
+      display: none;
+      margin-top: 17px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: #f0f6fc;
+      border: 1px solid #cfe0f2;
+      color: #27619b;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    #arena-contato .resultado.visivel {
+      display: block;
+    }
+
+    /* COLUNA LATERAL */
+
+    #arena-contato .coluna-info {
+      display: grid;
+      gap: 20px;
+    }
+
+    #arena-contato .icone-info {
+      width: 47px;
+      height: 47px;
+      border-radius: 12px;
+      background: #eaf2fb;
+      color: #27619b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 17px;
+    }
+
+    #arena-contato .info-texto {
+      font-size: 13px;
+      line-height: 1.9;
+      color: #6c7f93;
+      margin: 0;
+    }
+
+    #arena-contato .lista-assuntos {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+    }
+
+    #arena-contato .lista-assuntos li {
+      border-bottom: 1px solid #edf1f5;
+      padding: 11px 0;
+      font-size: 13px;
+      color: #5e7185;
+    }
+
+    #arena-contato .lista-assuntos li:last-child {
+      border-bottom: 0;
+    }
+
+    #arena-contato .lista-assuntos li::before {
+      content: "✓";
+      color: #27619b;
+      font-weight: bold;
+      margin-right: 9px;
+    }
+
+    #arena-contato .destaque {
+      background: #f4f8fd;
+      border-color: #dce8f5;
+    }
+
+    #arena-contato .destaque strong {
+      color: #27619b;
+    }
+
+    /* RESPONSIVIDADE */
+
+    @media (max-width: 900px) {
+      #arena-contato .contato-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #arena-contato .coluna-info {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      #arena-contato .cartao {
+        padding: 22px 17px;
+      }
+
+      #arena-contato .campos-duplos {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      #arena-contato .coluna-info {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body class="is-preload">
+
+<div id="wrapper">
+
+  <!-- CONTEÚDO PRINCIPAL -->
+
+  <div id="main">
+    <div class="inner">
+
+      <header id="header">
+        <a href="index.html" class="logo">
+          <strong>Arena 90</strong>
+        </a>
+
+        <ul class="icons">
+          <li>
+            <a href="#" class="icon brands fa-twitter">
+              <span class="label">Twitter</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="icon brands fa-facebook-f">
+              <span class="label">Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="icon brands fa-instagram">
+              <span class="label">Instagram</span>
+            </a>
+          </li>
+        </ul>
+      </header>
+
+      <!-- CONTATO -->
+
+      <section id="arena-contato">
+
+        <div class="contato-topo">
+
+          <span class="etiqueta">
+            ARENA 90 • FALE COM A GENTE
+          </span>
+
+          <h1>Entre em Contato</h1>
+
+          <p class="subtitulo">
+            Tem alguma sugestão, dúvida ou ideia para o Arena 90?
+            Queremos ouvir você! Sua participação ajuda
+            a tornar nosso portal cada vez melhor.
+          </p>
+
+        </div>
+
+        <div class="contato-grid">
+
+          <!-- FORMULÁRIO -->
+
+          <div class="cartao">
+
+            <h2>Envie sua mensagem</h2>
+
+            <p class="cartao-descricao">
+              Preencha os campos abaixo para compartilhar
+              sua dúvida, opinião ou sugestão.
+            </p>
+
+            <form id="formulario-contato">
+
+              <div class="campos-duplos">
+
+                <div class="campo">
+                  <label for="nome">
+                    Seu nome *
+                  </label>
+
+                  <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite seu nome"
+                    maxlength="100"
+                    autocomplete="name"
+                    required>
+                </div>
+
+                <div class="campo">
+                  <label for="email">
+                    Seu e-mail *
+                  </label>
+
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="seuemail@exemplo.com"
+                    maxlength="150"
+                    autocomplete="email"
+                    required>
+                </div>
+
+              </div>
+
+              <div class="campo">
+
+                <label for="assunto">
+                  Assunto *
+                </label>
+
+                <select
+                  id="assunto"
+                  name="assunto"
+                  required>
+
+                  <option value="">
+                    Selecione um assunto
+                  </option>
+
+                  <option value="Sugestão para o site">
+                    Sugestão para o site
+                  </option>
+
+                  <option value="Correção de informação">
+                    Correção de informação
+                  </option>
+
+                  <option value="Dúvida sobre futebol">
+                    Dúvida sobre futebol
+                  </option>
+
+                  <option value="Parceria">
+                    Parceria
+                  </option>
+
+                  <option value="Outro assunto">
+                    Outro assunto
+                  </option>
+
+                </select>
+
+              </div>
+
+              <div class="campo">
+
+                <label for="mensagem">
+                  Sua mensagem *
+                </label>
+
+                <textarea
+                  id="mensagem"
+                  name="mensagem"
+                  placeholder="Escreva sua mensagem aqui..."
+                  maxlength="3000"
+                  required></textarea>
+
+              </div>
+
+              <button
+                type="submit"
+                class="enviar">
+
+                <i class="fas fa-paper-plane"
+                   aria-hidden="true"></i>
+
+                Preparar mensagem
+
+              </button>
+
+              <p class="form-aviso">
+                * Campos obrigatórios.
+                Ao continuar, seu aplicativo de e-mail será aberto
+                com a mensagem preenchida. Você precisará
+                confirmar o envio no próprio aplicativo.
+              </p>
+
+              <div
+                id="resultado-envio"
+                class="resultado"
+                role="status"
+                aria-live="polite">
+              </div>
+
+            </form>
+
+          </div>
+
+          <!-- INFORMAÇÕES -->
+
+          <div class="coluna-info">
+
+            <!-- SOBRE -->
+
+            <div class="cartao">
+
+              <div class="icone-info">
+                <i class="fas fa-futbol"
+                   aria-hidden="true"></i>
+              </div>
+
+              <h2>Sobre o Arena 90</h2>
+
+              <p class="info-texto">
+                O Arena 90 é um portal dedicado aos
+                apaixonados por futebol brasileiro.
+                Aqui você encontra informações sobre
+                os clubes, classificação, partidas
+                e estatísticas do Brasileirão.
+              </p>
+
+              <p class="info-texto"
+                 style="margin-top: 13px;">
+                Nosso objetivo é reunir o futebol
+                em um só lugar, com informações
+                organizadas e uma navegação simples.
+              </p>
+
+            </div>
+
+            <!-- COMO PODE AJUDAR -->
+
+            <div class="cartao">
+
+              <div class="icone-info">
+                <i class="fas fa-comments"
+                   aria-hidden="true"></i>
+              </div>
+
+              <h2>Como você pode participar?</h2>
+
+              <ul class="lista-assuntos">
+                <li>Sugerir novas funcionalidades</li>
+                <li>Informar dados incorretos</li>
+                <li>Enviar ideias para o portal</li>
+                <li>Compartilhar sua opinião</li>
+              </ul>
+
+            </div>
+
+            <!-- MENSAGEM FINAL -->
+
+            <div class="cartao destaque">
+
+              <div class="icone-info">
+                <i class="fas fa-heart"
+                   aria-hidden="true"></i>
+              </div>
+
+              <h2>Feito para quem ama futebol</h2>
+
+              <p class="info-texto">
+                <strong>O Arena 90 está em evolução!</strong>
+                Cada sugestão é uma oportunidade
+                de melhorar a experiência dos torcedores.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+
+  <!-- MENU LATERAL -->
+
+  <div id="sidebar">
+    <div class="inner">
+
+      <section id="search" class="alt">
+        <form method="get" action="#">
+          <input
+            type="text"
+            name="query"
+            id="query"
+            placeholder="Procurar">
+        </form>
+      </section>
+
+      <nav id="menu">
+
+        <header class="major">
+          <h2>Menu</h2>
+        </header>
+
+        <ul>
+          <li>
+            <a href="index.html">Início</a>
+          </li>
+
+          <li>
+            <a href="generic.html">Times</a>
+          </li>
+
+          <li>
+            <a href="Tabela.html">Tabela</a>
+          </li>
+
+          <li>
+            <a href="Partidas.html">Partidas</a>
+          </li>
+
+          <li>
+            <a href="Estatisticas.html">Estatísticas</a>
+          </li>
+
+          <li>
+            <a href="Contato.html">Contato</a>
+          </li>
+        </ul>
+
+      </nav>
+
+      <!-- MAIS NOTÍCIAS -->
+
+      <section>
+
+        <header class="major">
+          <h2>Mais Notícias</h2>
+        </header>
+
+        <div class="mini-posts">
+
+          <article>
+            <a href="#" class="image">
+              <img
+                src="images/pic07.jpg"
+                alt="Notícias do futebol">
+            </a>
+
+            <p>
+              Acompanhe as novidades do futebol brasileiro.
+            </p>
+          </article>
+
+          <article>
+            <a href="#" class="image">
+              <img
+                src="images/pic08.jpg"
+                alt="Jogos de futebol">
+            </a>
+
+            <p>
+              Confira os resultados e destaques
+              das competições.
+            </p>
+          </article>
+
+        </div>
+
+      </section>
+
+      <!-- FALE CONOSCO -->
+
+      <section>
+
+        <header class="major">
+          <h2>Fale Conosco</h2>
+        </header>
+
+        <p>
+          Sua opinião é importante!
+          Acesse a página de contato
+          e envie sua sugestão.
+        </p>
+
+        <ul class="actions">
+          <li>
+            <a href="Contato.html"
+               class="button">
+              Entrar em contato
+            </a>
+          </li>
+        </ul>
+
+      </section>
+
+      <!-- RODAPÉ -->
+
+      <footer id="footer">
+
+        <p class="copyright">
+          &copy; Arena 90.
+          Design:
+          <a href="https://html5up.net">
+            HTML5 UP
+          </a>.
+        </p>
+
+      </footer>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- SCRIPTS DO TEMPLATE -->
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<!-- FUNCIONAMENTO DO FORMULÁRIO -->
+
+<script>
+(function () {
+  "use strict";
+
+  /*
+    IMPORTANTE:
+
+    Substitua o e-mail abaixo pelo endereço
+    que receberá as mensagens do Arena 90.
+
+    O formulário utiliza mailto.
+    Não envia mensagens automaticamente.
+  */
+
+  const EMAIL_DESTINO = "SEUEMAIL@EXEMPLO.COM";
+
+  const formulario = document.getElementById(
+    "formulario-contato"
+  );
+
+  const resultado = document.getElementById(
+    "resultado-envio"
+  );
+
+  formulario.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+
+    if (!formulario.reportValidity()) {
+      return;
+    }
+
+    const nome = document.getElementById(
+      "nome"
+    ).value.trim();
+
+    const email = document.getElementById(
+      "email"
+    ).value.trim();
+
+    const assunto = document.getElementById(
+      "assunto"
+    ).value;
+
+    const mensagem = document.getElementById(
+      "mensagem"
+    ).value.trim();
+
+    if (!nome || !email || !assunto || !mensagem) {
+      resultado.textContent =
+        "Por favor, preencha todos os campos.";
+
+      resultado.classList.add("visivel");
+      return;
+    }
+
+    /*
+      Evita abrir o aplicativo de e-mail
+      antes de configurar um destinatário real.
+    */
+
+    if (
+      EMAIL_DESTINO === "SEUEMAIL@EXEMPLO.COM" ||
+      !EMAIL_DESTINO.includes("@")
+    ) {
+      resultado.textContent =
+        "O e-mail de contato do Arena 90 ainda " +
+        "não foi configurado. Tente novamente mais tarde.";
+
+      resultado.classList.add("visivel");
+      return;
+    }
+
+    const titulo =
+      "[Arena 90] " + assunto;
+
+    const corpo =
+      "NOVA MENSAGEM - ARENA 90\n\n" +
+      "Nome: " + nome + "\n" +
+      "E-mail: " + email + "\n" +
+      "Assunto: " + assunto + "\n\n" +
+      "Mensagem:\n" + mensagem + "\n\n" +
+      "Enviado a partir da página de contato do Arena 90.";
+
+    const link =
+      "mailto:" + EMAIL_DESTINO +
+      "?subject=" + encodeURIComponent(titulo) +
+      "&body=" + encodeURIComponent(corpo);
+
+    resultado.textContent =
+      "Seu aplicativo de e-mail será aberto. " +
+      "Confira os dados e clique em Enviar " +
+      "para concluir. A mensagem ainda não foi enviada.";
+
+    resultado.classList.add("visivel");
+
+    window.location.href = link;
+  });
+
+})();
+</script>
+
+</body>
+</html>
